@@ -14,8 +14,6 @@ with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
 
 sum_by_column_key = df.groupby('country')['points'].sum()
 
-# print(df['country'].unique())
-# print(df['country'].value_counts()['US'])
 country = []
 country_count = []
 country_ave = []
@@ -24,8 +22,6 @@ for i in df['country'].unique():
     try:
         country.append(i)
         country_count.append(df['country'].value_counts()[i])
-        # country_ave.append(
-        # round(sum_by_column_key[i] / df['country'].value_counts()[i]), 2)
         country_ave.append(
             sum_by_column_key[i] / df['country'].value_counts()[i])
     except:
@@ -46,8 +42,3 @@ print(out_data_frame)
 out_data_frame.to_csv('data/reviews-per-country.csv', index=False)
 
 print("reviews-per-country.csv has been created")
-
-# # data_out_to_csv = pd.DataFrame(d, index=['country', 'count'])
-# # data_out_to_csv.to_csv('data/reviews-per-country.csv')
-
-# print(out_data_frame)
