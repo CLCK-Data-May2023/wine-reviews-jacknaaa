@@ -12,11 +12,11 @@ with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
         df = pd.read_csv(csv_file)
 
 country_counts = df['country'].value_counts()
-print(country_counts)
+# print(country_counts)
 
 points = df.groupby('country').points.mean().round(1)
 # print(points)
 answer = pd.merge(country_counts, points, on='country')
-print(answer)
+# print(answer)
 
 answer.to_csv('data/reviews-per-country.csv')
